@@ -2,7 +2,7 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
-    {
+     /*{
       text: 'Homes',
       links: [
         {
@@ -22,8 +22,8 @@ export const headerData = {
           href: getPermalink('/homes/personal'),
         },
       ],
-    },
-    {
+    },*/
+    /*{
       text: 'Pages',
       links: [
         {
@@ -55,8 +55,8 @@ export const headerData = {
           href: getPermalink('/privacy'),
         },
       ],
-    },
-    {
+    },*/
+   /* {
       text: 'Landing',
       links: [
         {
@@ -84,6 +84,18 @@ export const headerData = {
           href: getPermalink('/landing/subscription'),
         },
       ],
+    }*/,
+    {
+      text: 'Documentation',
+      href: '/documentation',
+    },
+    {
+      text: 'Pricing',
+      href: '/pricing',
+    },
+    {
+      text: 'Company',
+      href: '/about',
     },
     {
       text: 'Blog',
@@ -110,17 +122,16 @@ export const headerData = {
         },
       ],
     },
-    {
+    /*{
       text: 'Widgets',
       href: '#',
-    },
+    },*/
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
-};
+  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],};
 
 export const footerData = {
   links: [
-    {
+ /*  {
       title: 'Product',
       links: [
         { text: 'Features', href: '#' },
@@ -139,7 +150,7 @@ export const footerData = {
         { text: 'Partners', href: '#' },
         { text: 'Atom', href: '#' },
         { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        { text: 'SSoBridge Desktop', href: '#' },
       ],
     },
     {
@@ -163,7 +174,7 @@ export const footerData = {
         { text: 'Social Impact', href: '#' },
         { text: 'Shop', href: '#' },
       ],
-    },
+    },*/
   ],
   secondaryLinks: [
     { text: 'Terms', href: getPermalink('/terms') },
@@ -177,7 +188,6 @@ export const footerData = {
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
   ],
   footNote: `
-    <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img>
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+    <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img> © Copyright 2024,  All rights reserved.
   `,
 };

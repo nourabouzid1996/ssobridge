@@ -1,0 +1,5 @@
+
+const metadata = {
+  title: 'SSOBridge — Integrate SSO in Your Scala Apps in Minutes',
+  ignoreTitleTemplate: true,
+};
