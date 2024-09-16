@@ -24,7 +24,8 @@ export const headerData = {
       ],
     },*/
     /*{
-      text: 'Pages',
+      text: 'Pag
+      es',
       links: [
         {
           text: 'Features (Anchor Link)',
@@ -84,7 +85,7 @@ export const headerData = {
           href: getPermalink('/landing/subscription'),
         },
       ],
-    }*/,
+    }*/
     {
       text: 'Documentation',
       href: '/documentation',
@@ -121,7 +122,7 @@ export const headerData = {
           href: getPermalink('astro', 'tag'),
         },
       ],
-    },
+    }
     /*{
       text: 'Widgets',
       href: '#',
