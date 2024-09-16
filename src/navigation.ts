@@ -2,7 +2,7 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
-     /*{
+    /*{
       text: 'Homes',
       links: [
         {
@@ -57,7 +57,7 @@ export const headerData = {
         },
       ],
     },*/
-   /* {
+    /* {
       text: 'Landing',
       links: [
         {
@@ -122,17 +122,18 @@ export const headerData = {
           href: getPermalink('astro', 'tag'),
         },
       ],
-    }
+    },
     /*{
       text: 'Widgets',
       href: '#',
     },*/
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],};
+  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+};
 
 export const footerData = {
   links: [
- /*  {
+    /*  {
       title: 'Product',
       links: [
         { text: 'Features', href: '#' },
