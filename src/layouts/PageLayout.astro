@@ -20,6 +20,13 @@ const { metadata } = Astro.props;
     <Announcement />
   </slot>
   <slot name="header">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="google-site-verification" content="bKz6_Tpuo09WLHGSRnm6WP8fJguciA3VIRVjgVVaIZI" />
+      <!-- Autres balises Meta ici -->
+    </head>
+
     <Header {...headerData} isSticky showRssFeed showToggleTheme />
   </slot>
   <main>
