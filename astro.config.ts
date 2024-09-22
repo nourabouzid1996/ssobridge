@@ -22,9 +22,11 @@ const whenExternalScripts = (items: (() => AstroIntegration) | (() => AstroInteg
   hasExternalScripts ? (Array.isArray(items) ? items.map((item) => item()) : [items()]) : [];
 
 export default defineConfig({
+  site: 'https://ssobridge.vercel.app', // Replace with your actual site URL
   output: 'static',
 
   integrations: [
+    [sitemap()],
     tailwind({
       applyBaseStyles: false,
     }),
