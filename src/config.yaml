@@ -1,6 +1,6 @@
 site:
   name: SSoBridge
-  site: 'https://astrowind.vercel.app'
+  site: 'https://ssobridge.vercel.app'
   base: '/'
   trailingSlash: false
 
