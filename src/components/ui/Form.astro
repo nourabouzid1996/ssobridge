@@ -5,7 +5,7 @@ import Button from '~/components/ui/Button.astro';
 const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
 ---
 
-<form>
+<form id="contactForm" action="https://formspree.io/f/mpwavpdq" method="POST">
   {
     inputs &&
       inputs.map(
@@ -85,3 +85,35 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
     )
   }
 </form>
+
+<script>
+  const contactForm = document.getElementById('contactForm') as HTMLFormElement | null;
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          alert('Thank you! Your message has been sent.');
+          contactForm.reset();
+        } else {
+          alert('Oops! Something went wrong.');
+        }
+      } catch (error) {
+        console.error('Form submission error:', error);
+        alert('An error occurred while sending the message.');
+      }
+    });
+  }
+</script>
