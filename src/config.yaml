@@ -1,6 +1,6 @@
 site:
   name: SSoBridge
-  site: 'https://ssobridge.vercel.app'
+  site: 'https://sso-bridge.com'
   base: '/'
   trailingSlash: false
 

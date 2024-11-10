@@ -51,7 +51,7 @@
 
 ## Demo
 
-📌 [https://ssobridge.vercel.app/](https://ssobridge.vercel.app/)
+📌 [https://sso-bridge.com/](https://sso-bridge.com/)
 
 <br>
 

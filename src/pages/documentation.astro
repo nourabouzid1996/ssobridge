@@ -1,0 +1,17 @@
+---
+import DSet from '../pages/docs/setup.md';
+
+const diagramCode = `
+  graph TD;
+    A[User clicks "Login with SSO"] --> B[App redirects to SSOBridge];
+    B --> C[SSOBridge requests Identity Provider];
+    C --> D[Identity Provider authenticates user];
+    D --> E[SSOBridge receives and validates token];
+    E --> F[User is logged into the app];
+`;
+---
+
+<article>
+  <DSet />
+
+</article>

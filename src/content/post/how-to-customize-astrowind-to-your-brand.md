@@ -8,7 +8,7 @@ tags:
   - tailwind css
   - theme
 metadata:
-  canonical: https://ssobridge.vercel.app/how-to-customize-astrowind-to-your-brand
+  canonical: https://sso-bridge.com/how-to-customize-astrowind-to-your-brand
 ---
 
 ## Congue justo vulputate nascetur convallis varius orci fringilla nulla pharetr

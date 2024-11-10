@@ -1,0 +1,38 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Hero from '~/components/widgets/Hero.astro';
+
+const metadata = {
+  title: 'Contact Us',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="Get ready to integrate SAML SSO with ease"
+    title="Your Scala app deserves seamless SSO integration"
+    subtitle="Thank you for your interest in SSOBridge! Enter your email address, and we'll notify you as soon as the SSOBridge account dashboard is available."
+  />
+  <ContactUs
+    id="form"
+    title="Drop us a message today!"
+    inputs={[
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+      },
+    ]}
+    textarea={{
+      label: 'Message',
+      name: 'message',
+    }}
+    disclaimer={{
+      label:
+        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+    }}
+    description="Our support team typically responds within 24 business hours."
+  />
+</Layout>

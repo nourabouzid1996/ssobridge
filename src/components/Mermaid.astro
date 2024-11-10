@@ -1,0 +1,19 @@
+---
+import { useEffect } from 'react';
+import mermaid from 'mermaid';
+
+const { code } = Astro.props;
+
+useEffect(() => {
+  const initMermaid = async () => {
+    mermaid.initialize({ startOnLoad: true });
+    await mermaid.contentLoaded(); // Ensure that Mermaid processes the diagrams after the content is loaded
+  };
+  
+  initMermaid();
+}, []);
+---
+
+<div class="mermaid">
+  {code}
+</div>

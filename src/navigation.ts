@@ -1,4 +1,4 @@
-import { getPermalink, getAsset } from './utils/permalinks';
+import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [
@@ -23,13 +23,12 @@ export const headerData = {
         },
       ],
     },*/
-    /*{ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
-      text: 'Pag
-      es',
+    /*{
+      text: 'Pages',
       links: [
         {
           text: 'Features (Anchor Link)',
-          href: getPermalink('/#features'),
+          href: getPermalink('/features'),
         },
         {
           text: 'Services',
@@ -56,7 +55,7 @@ export const headerData = {
           href: getPermalink('/privacy'),
         },
       ],
-    },*/
+    },
     /* {
       text: 'Landing',
       links: [
@@ -86,10 +85,11 @@ export const headerData = {
         },
       ],
     }*/
-    /* {
+    {
       text: 'Documentation',
       href: '/documentation',
     },
+      /* {
     {
       text: 'Pricing',
       href: '/pricing',
@@ -128,6 +128,7 @@ export const headerData = {
       href: '#',
     },*/
   ],
+  
 };
 
 export const footerData = {
