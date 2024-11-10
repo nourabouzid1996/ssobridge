@@ -81,44 +81,46 @@ const metadata = {
   </Content>
 
   <Content
-  isAfterContent
-  items={[
-    {
-      title: 'Support for all major identity providers',
-      description: `SSOBridge supports integration with all major identity providers, including Okta, Google, Microsoft, and more.
+    isAfterContent
+    items={[
+      {
+        title: 'Support for all major identity providers',
+        description: `SSOBridge supports integration with all major identity providers, including Okta, Google, Microsoft, and more.
        Whether your users authenticate via SAML, OAuth, or OpenID Connect, we've got you covered.
        Need support for a specific provider? Just contact us, and we’ll make it happen!`,
-    },
-    {
-      title: 'SSOBridge: Effortless SSO Integration for Scala Applications',
-      description: `Simplify the way you connect your Scala apps to SSO providers. SSOBridge delivers secure, hassle-free Single Sign-On integration, reducing development time from hours to minutes.`,
-    },
-    {
-      title: 'Unlock Seamless SSO with SSOBridge for Scala',
-      description: `Integrate Single Sign-On into your Scala applications in just a few clicks. SSOBridge empowers you with powerful, scalable SSO solutions that are easy to implement and customize.`,
-    },
-  ]}
->
-  <Fragment slot="bg">
+      },
+      {
+        title: 'SSOBridge: Effortless SSO Integration for Scala Applications',
+        description: `Simplify the way you connect your Scala apps to SSO providers. SSOBridge delivers secure, hassle-free Single Sign-On integration, reducing development time from hours to minutes.`,
+      },
+      {
+        title: 'Unlock Seamless SSO with SSOBridge for Scala',
+        description: `Integrate Single Sign-On into your Scala applications in just a few clicks. SSOBridge empowers you with powerful, scalable SSO solutions that are easy to implement and customize.`,
+      },
+    ]}
+  >
+    <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-  </Fragment>
+    </Fragment>
 
-  {/* Tabs container */}
-  <Fragment slot="image">
+    {/* Tabs container */}
+    <Fragment slot="image">
       <div class="p-4 bg-gray-800 text-white border border-green-600 rounded-md shadow-md relative">
-          <div class="tabs">
-              <ul class="flex border-b border-gray-500">
-                  <li class="mr-4">
-                      <button class="tab-btn py-2 px-4 focus:outline-none active-tab">Curl</button>
-                  </li>
-                  <li>
-                      <button class="tab-btn py-2 px-4 focus:outline-none">Scala</button>
-                  </li>
-              </ul>
-    <div class="tab-content py-4" style="position: relative; height: 300px;"> <!-- Adjust height here -->
-    <!-- Curl tab content -->
-    <div class="tab-pane active absolute inset-0">
-        <pre class="text-sm text-white font-mono">
+        <div class="tabs">
+          <ul class="flex border-b border-gray-500">
+            <li class="mr-4">
+              <button class="tab-btn py-2 px-4 focus:outline-none active-tab">Curl</button>
+            </li>
+            <li>
+              <button class="tab-btn py-2 px-4 focus:outline-none">Scala</button>
+            </li>
+          </ul>
+          <div class="tab-content py-4" style="position: relative; height: 300px;">
+            <!-- Adjust height here -->
+            <!-- Curl tab content -->
+            <div class="tab-pane active absolute inset-0">
+              <pre
+                class="text-sm text-white font-mono">
 {`
 
 # Replace {auth_id} with the actual auth ID and {your_api_token} 
@@ -139,10 +141,12 @@ curl -X GET "https://api.ssobridge.com/v1/saml/code" \
      -H "Authorization: Bearer {your_api_token}"
 `}
         </pre>
-    </div>
-    <!-- Scala tab content -->
-    <div class="tab-pane hidden absolute inset-0" style="height: 100%; overflow-y: auto;"> <!-- Adjust Scala tab height -->
-        <pre class="text-sm text-white font-mono">
+            </div>
+            <!-- Scala tab content -->
+            <div class="tab-pane hidden absolute inset-0" style="height: 100%; overflow-y: auto;">
+              <!-- Adjust Scala tab height -->
+              <pre
+                class="text-sm text-white font-mono">
 {`import ssoready.SSOReadyClient
 
 object SSOClientExample extends App {
@@ -160,34 +164,33 @@ object SSOClientExample extends App {
 }
 `}
         </pre>
-    </div>
-</div>
-
+            </div>
           </div>
+        </div>
       </div>
-  </Fragment>
-</Content>
+    </Fragment>
+  </Content>
 
-{/* Tab Switching Script */}
-<script>
-  const tabs = document.querySelectorAll('.tab-btn');
-  const tabPanes = document.querySelectorAll('.tab-pane');
+  {/* Tab Switching Script */}
+  <script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
 
-  tabs.forEach((tab, index) => {
+    tabs.forEach((tab, index) => {
       tab.addEventListener('click', () => {
-          tabs.forEach((t) => t.classList.remove('active-tab'));
-          tab.classList.add('active-tab');
+        tabs.forEach((t) => t.classList.remove('active-tab'));
+        tab.classList.add('active-tab');
 
-          tabPanes.forEach((pane) => {
-              pane.classList.add('hidden');
-              pane.classList.remove('active');
-          });
+        tabPanes.forEach((pane) => {
+          pane.classList.add('hidden');
+          pane.classList.remove('active');
+        });
 
-          tabPanes[index].classList.remove('hidden');
-          tabPanes[index].classList.add('active');
+        tabPanes[index].classList.remove('hidden');
+        tabPanes[index].classList.add('active');
       });
-  });
-</script>
+    });
+  </script>
 
   <!-- Content Widget **************** -->
 

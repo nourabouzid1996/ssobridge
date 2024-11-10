@@ -89,7 +89,7 @@ export const headerData = {
       text: 'Documentation',
       href: '/documentation',
     },
-      /* {
+    /* {
     {
       text: 'Pricing',
       href: '/pricing',
@@ -128,7 +128,6 @@ export const headerData = {
       href: '#',
     },*/
   ],
-  
 };
 
 export const footerData = {

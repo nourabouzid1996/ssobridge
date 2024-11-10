@@ -6,9 +6,9 @@ const { code } = Astro.props;
 
 useEffect(() => {
   const initMermaid = async () => {
-    mermaid.initialize({ startOnLoad: true })
+    mermaid.initialize({ startOnLoad: true });
   };
-  
+
   initMermaid();
 }, []);
 ---

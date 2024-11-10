@@ -19,6 +19,7 @@ This ensures that users only need one set of login credentials across different 
 ![PlantUML Diagram](https://www.planttext.com/api/plantuml/png/NP3FRi8m38VlUGghTrwWXuco0qAQD4G5To-nm6gN5CS5yVR4bUZeJldZJvz_zZehYew_lKElIU2OITnGljZpW56XQeQX0inGpcMXRRytmk5CKtb-BQ5TeAYi3zXBkd4WcU1Ts3jdhM3rOU8QFdlsNORgAvqvmftrOiRAbQ8nixs60mKMyWgQtfhEDwEBleQMOW0SzM81F2gd24BNaRAw0lopDdyWmMXBM1ZVo1Fs78pIr55SOjCeSq3Jm0_wxZM5JLp3Lcmpw3tbxDownBJrFm40)
 
 ---
+
 ### **Schema: SSOBridge Flow**
 
 ```plaintext
@@ -41,3 +42,4 @@ This ensures that users only need one set of login credentials across different 
            |
            V
 7. App grants access to the user
+```
