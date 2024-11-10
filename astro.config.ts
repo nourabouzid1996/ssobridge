@@ -11,7 +11,6 @@ import type { AstroIntegration } from 'astro';
 
 import astrowind from './vendor/integration';
 import mdx from '@astrojs/mdx';
-import remarkMermaid from 'remark-mermaidjs'
 
 import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin, lazyImagesRehypePlugin } from './src/utils/frontmatter';
 
