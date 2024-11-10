@@ -11,5 +11,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "destination": "https://sso-bridge.com/$1",
+      "permanent": true
+    }
   ]
 }
