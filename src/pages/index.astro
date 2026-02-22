@@ -1,0 +1,256 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Content from '~/components/widgets/Content.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+const googlePlayImg = '~/assets/images/logos_idp_1.jpg';
+
+const metadata = {
+  title: 'SSOBridge — ',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    actions={[
+      /*{
+        variant: 'primary',
+        text: 'Get template',
+        href: 'https://github.com/onwidget/astrowind',
+        target: '_blank',
+        icon: 'tabler:download',
+      },*/
+      { text: 'Ajouter le SSO à mon SaaS', href: 'account' },
+    ]}
+  >
+    <Fragment slot="title">
+      <span class="text-accent dark:text-white highlight"> SAML prêt pour la production via seulement 2 endpoints </span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        <span class="font-semibold">Pensé pour les développeurs, prêt pour la production, et conçu pour accélérer la signature de clients entreprise.
+</span>
+      </span>
+    </Fragment>
+  </Hero>
+
+  <!-- Note Widget ******************* -->
+
+  <Note />
+
+  <!-- Features Widget *************** -->
+
+  <!-- Content Widget **************** -->
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Compatible avec les principaux fournisseurs d’identité',
+        description: `SSOBridge s’intègre facilement avec les principaux fournisseurs d’identité (Okta, Google, Microsoft, etc.).
+          SAML, OAuth ou OpenID Connect — une intégration simple, quel que soit votre fournisseur.`,
+      },
+      
+    ]}
+    image={{
+          src: googlePlayImg,
+
+      alt: 'CANVA',
+    }}
+  >
+    <!--Fragment slot="content">Ensure your online presence truly represents you.</Fragment-->
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <Content
+    isAfterContent
+     items={[
+      {
+        title: 'SSO avec tous les IdP, via 2 endpoints',
+        description: `Une seule intégration, deux endpoints API, et le support des principaux Identity Providers (Okta, Microsoft, Google, Auth0, Keycloak).
+        Activez le SSO entreprise (SAML & OIDC) en quelques minutes.`,
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+
+    {/* Tabs container */}
+    <Fragment slot="image">
+      <div class="p-4 bg-gray-800 text-white border border-green-600 rounded-md shadow-md relative">
+        <div class="tabs">
+          <ul class="flex border-b border-gray-500">
+            <li class="mr-4">
+              <button class="tab-btn py-2 px-4 focus:outline-none active-tab">Curl</button>
+            </li>
+             {/* <li>
+              <button class="tab-btn py-2 px-4 focus:outline-none">Scala</button>
+            </li>
+            */}
+          </ul>
+          <div class="tab-content py-4" style="position: relative; height: 300px;">
+            <!-- Adjust height here -->
+            <!-- Curl tab content -->
+            <div class="tab-pane active absolute inset-0">
+              <pre
+                class="text-sm text-white font-mono">
+{`
+
+# Replace {auth_id} with the actual auth ID and {your_api_token} 
+with your actual API token
+
+# Get login URL
+curl -X GET "https://api.ssobridge.com/v1/saml/login/{auth_id}" \
+     
+     -H "Content-Type: application/json" \
+
+     -H "Authorization: Bearer {your_api_token}"
+
+# Read access code
+curl -X GET "https://api.ssobridge.com/v1/saml/code" \
+
+     -H "Content-Type: application/json" \
+
+     -H "Authorization: Bearer {your_api_token}"
+`}
+        </pre>
+            </div>
+            <!-- Scala tab content -->
+            <div class="tab-pane hidden absolute inset-0" style="height: 100%; overflow-y: auto;">
+              <!-- Adjust Scala tab height -->
+              <pre
+                class="text-sm text-white font-mono">
+{`import ssoready.SSOReadyClient
+
+object SSOClientExample extends App {
+  val ssoReady = new SSOReadyClient(apiKey = "YOUR_API_KEY")
+
+  // Get the SAML redirect URL
+  val redirectUrlFuture: Future[String] = ssoReady.saml.getSamlRedirectUrl(
+    organizationExternalId = "my_custom_external_id"
+  )
+
+  // Exchange SAML access code for login details
+  val loginDetailsFuture: Future[LoginDetails] = ssoReady.saml.redeemSamlAccessCode(
+    samlAccessCode = "saml_access_code_..."
+  )
+}`}
+        </pre>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </Fragment>
+  </Content>
+
+  {/* Tab Switching Script */}
+  <script>
+    const tabs = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => t.classList.remove('active-tab'));
+        tab.classList.add('active-tab');
+
+        tabPanes.forEach((pane) => {
+          pane.classList.add('hidden');
+          pane.classList.remove('active');
+        });
+
+        tabPanes[index].classList.remove('hidden');
+        tabPanes[index].classList.add('active');
+      });
+    });
+  </script>
+
+  <!-- Content Widget **************** -->
+
+  <!-- Steps Widget ******************  Un besoin spécifique ? Nous pouvons le prendre en charge rapidement. -->
+
+  <ContactUs
+  id="form"
+  title="Un besoin spécifique ? Contactez-nous dès aujourd’hui"
+  inputs={[
+    {
+      type: 'email',
+      name: 'email',
+      label: 'Adresse email',
+    },
+  ]}
+  textarea={{
+    label: 'Message',
+    name: 'message',
+  }}
+  disclaimer={{
+    label:
+      'En soumettant ce formulaire, vous acceptez la collecte et le traitement de vos informations personnelles.',
+  }}
+  description="Notre équipe répond généralement sous 24 heures ouvrées."
+/>
+
+  <!--Steps
+    title="Get your dream website up and running in no time with SSoBridge."
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Download</span>',
+        description:
+          "Kickstart with GitHub! Either fork the SSoBridge template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
+        icon: 'tabler:package',
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Add content</span>',
+        description:
+          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
+        icon: 'tabler:letter-case',
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        description:
+          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by SSoBridge! Precision in design ensures a seamless user experience.',
+        icon: 'tabler:paint',
+      },
+      {
+        title: 'Ready!',
+        icon: 'tabler:check',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+      alt: 'Steps image',
+    }}
+  /--->
+
+  <!-- Features2 Widget ************** -->
+
+  <!-- HighlightedPosts Widget ******* -->
+
+  <!-- FAQs Widget ******************* -->
+
+  <!-- Stats Widget ****************** -->
+
+  <!--Stats
+    stats={[
+      { title: 'Downloads', amount: '132K' },
+      { title: 'Stars', amount: '24.8K' },
+      { title: 'Forks', amount: '10.3K' },
+      { title: 'Users', amount: '48.4K' },
+    ]}
+  /-->
+
+  <!-- CallToAction Widget *********** -->
+  <Hero actions={[{ text: 'Ajouter le SSO à mon SaaS', href: 'add' }]} />
+</Layout>

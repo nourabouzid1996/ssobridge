@@ -1,0 +1,119 @@
+---
+import type { Form as Props } from '~/types';
+import Button from '~/components/ui/Button.astro';
+
+const { inputs, textarea, disclaimer, button = 'Envoyer', description = '' } = Astro.props;
+---
+
+<form id="contactForm" action="https://formspree.io/f/mpwavpdq" method="POST">
+  {
+    inputs &&
+      inputs.map(
+        ({ type = 'text', name, label = '', autocomplete = 'on', placeholder = '' }) =>
+          name && (
+            <div class="mb-6">
+              {label && (
+                <label for={name} class="block text-sm font-medium">
+                  {label}
+                </label>
+              )}
+              <input
+                type={type}
+                name={name}
+                id={name}
+                autocomplete={autocomplete}
+                placeholder={placeholder}
+                class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
+              />
+            </div>
+          )
+      )
+  }
+
+  {
+    textarea && (
+      <div>
+        <label for="textarea" class="block text-sm font-medium">
+          {textarea.label}
+        </label>
+        <textarea
+          id="textarea"
+          name={textarea.name ? textarea.name : 'message'}
+          rows={textarea.rows ? textarea.rows : 4}
+          placeholder={textarea.placeholder}
+          class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
+        />
+      </div>
+    )
+  }
+
+  {
+    disclaimer && (
+      <div class="mt-3 flex items-start">
+        <div class="flex mt-0.5">
+          <input
+            id="disclaimer"
+            name="disclaimer"
+            type="checkbox"
+            class="cursor-pointer mt-1 py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
+          />
+        </div>
+        <div class="ml-3">
+          <label for="disclaimer" class="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400">
+            {disclaimer.label}
+          </label>
+        </div>
+      </div>
+    )
+  }
+
+  {
+    button && (
+      <div class="mt-10 grid">
+        <Button variant="primary" type="submit">
+          {button}
+        </Button>
+      </div>
+    )
+  }
+
+  {
+    description && (
+      <div class="mt-3 text-center">
+        <p class="text-sm text-gray-600 dark:text-gray-400">{description}</p>
+      </div>
+    )
+  }
+</form>
+
+<script>
+  const contactForm = document.getElementById('contactForm') as HTMLFormElement | null;
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(contactForm);
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            Accept: 'application/json',
+          },
+        });
+
+        if (response.ok) {
+          alert('Thank you! Your message has been sent.');
+          contactForm.reset();
+        } else {
+          alert('Oops! Something went wrong.');
+        }
+      } catch (error) {
+        console.error('Form submission error:', error);
+        alert('An error occurred while sending the message.');
+      }
+    });
+  }
+</script>

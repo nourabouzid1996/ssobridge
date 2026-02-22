@@ -1,0 +1,8 @@
+
+const metadata = {
+  title: 'Ajoutez le SSO entreprise à votre SaaS via seulement 2 endpoints - SAML prêt pour la production',
+  ignoreTitleTemplate: true,
+};
+
+text: 'Pricing',
+href: getPermalink('/pricing'),

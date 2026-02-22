@@ -1,0 +1,38 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
+import Hero from '~/components/widgets/Hero.astro';
+
+const metadata = {
+  title: 'Contact Us',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+  <Hero
+    tagline="SAML prêt pour la production via seulement 2 endpoints "
+    title="Conçu pour accélérer la signature de clients entreprise"
+  />
+  
+  <ContactUs
+    id="form"
+  title="Un besoin spécifique ? Contactez-nous dès aujourd’hui"
+  inputs={[
+    {
+      type: 'email',
+      name: 'email',
+      label: 'Adresse email',
+    },
+  ]}
+  textarea={{
+    label: 'Message',
+    name: 'message',
+  }}
+  disclaimer={{
+    label:
+      'En soumettant ce formulaire, vous acceptez la collecte et le traitement de vos informations personnelles.',
+  }}
+  description="Notre équipe répond généralement sous 24 heures ouvrées."
+  />
+</Layout>
