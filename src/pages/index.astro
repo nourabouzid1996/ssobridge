@@ -5,7 +5,7 @@ import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Content from '~/components/widgets/Content.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
-const googlePlayImg = '~/assets/images/logos_idp_1.jpg';
+const googlePlayImg = '~/assets/images/image_copy.png';
 
 const metadata = {
   title: 'SSOBridge — ',
@@ -120,7 +120,6 @@ curl -X GET "https://api.ssobridge.com/v1/saml/login/{auth_id}" \\
   -H "Content-Type: application/json"
 
 # Redirect your user to the returned login_url
-
 
 # 2. Exchange access code (SSO callback)
 curl -X GET "https://api.ssobridge.com/v1/saml/code" \\
