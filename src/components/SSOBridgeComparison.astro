@@ -1,0 +1,151 @@
+<div class="w-full max-w-5xl mx-auto my-12 px-4">
+  <div class="bg-[#0b0c10] border border-slate-800/80 rounded-3xl p-6 sm:p-12 text-center shadow-2xl relative overflow-hidden">
+    
+    <!-- Boutons de bascule dynamique -->
+    <div class="inline-flex bg-slate-900 border border-slate-800 p-1.5 rounded-full mb-8 relative z-20">
+      <button 
+        id="btn-without-diagram" 
+        data-i18n="diag_btn_without"
+        class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white"
+      >
+        Sans SSOBridge
+      </button>
+      <button 
+        id="btn-with-diagram" 
+        data-i18n="diag_btn_with"
+        class="px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20"
+      >
+        Avec SSOBridge
+      </button>
+    </div>
+
+    <!-- En-tête dynamique -->
+    <div id="header-with" class="transition-all duration-500">
+      <h3 class="text-2xl sm:text-4xl font-normal text-white">
+        <span data-i18n="diag_title_with">Avec</span> <span class="font-bold text-white">SSOBridge</span> :
+      </h3>
+      <p data-i18n="diag_sub_with" class="text-emerald-400 text-2xl sm:text-3xl font-medium mt-1 mb-10 tracking-tight">
+        Intégration Simple
+      </p>
+    </div>
+
+    <div id="header-without" class="hidden transition-all duration-500">
+      <h3 class="text-2xl sm:text-4xl font-normal text-white">
+        <span data-i18n="diag_title_without">Sans</span> <span class="font-bold text-white">SSOBridge</span> :
+      </h3>
+      <p data-i18n="diag_sub_without" class="text-red-400 text-2xl sm:text-3xl font-medium mt-1 mb-10 tracking-tight">
+        Complexe & Fragmenté
+      </p>
+    </div>
+
+    <!-- Diagramme Schéma Animé -->
+    <div class="relative flex flex-col md:flex-row items-center justify-center gap-6 md:gap-0 max-w-4xl mx-auto min-h-[280px]">
+      
+      <!-- Lignes de connexion -->
+      <div id="line-with" class="hidden md:block absolute top-1/2 left-12 right-12 h-[2px] bg-gradient-to-r from-slate-700 via-purple-500 to-slate-700 -translate-y-1/2 z-0">
+        <div class="w-20 h-full bg-purple-300 blur-sm animate-pulse"></div>
+      </div>
+      
+      <div id="line-without" class="hidden md:block absolute top-1/2 left-12 right-12 h-[2px] bg-red-900/50 -translate-y-1/2 z-0"></div>
+
+      <!-- CARD 1: Your Application -->
+      <div class="relative z-10 w-full md:w-64 h-60 bg-[#14151f] border border-slate-800 rounded-2xl p-6 flex flex-col justify-between text-left shadow-xl transition-all duration-500 hover:border-slate-700">
+        <div>
+          <h4 data-i18n="diag_your_app_1" class="text-lg font-medium text-slate-200">Votre</h4>
+          <h4 data-i18n="diag_your_app_2" class="text-lg font-medium text-slate-200">Application</h4>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-2 text-xs text-slate-400 font-mono pt-4 border-t border-slate-800/80">
+          <div class="flex items-center gap-1.5">⚛️ React</div>
+          <div class="flex items-center gap-1.5">⚡ Cloudflare</div>
+          <div class="flex items-center gap-1.5">☕ Java</div>
+          <div class="flex items-center gap-1.5">🐍 Python</div>
+        </div>
+      </div>
+
+      <!-- CARD 2: Central Hub -->
+      <!-- Mode WITH -->
+      <div id="card-center-with" class="relative z-10 w-full md:w-72 h-64 bg-gradient-to-br from-purple-500 via-indigo-600 to-purple-800 rounded-2xl p-6 flex flex-col justify-between text-left text-white shadow-2xl shadow-purple-600/30 md:-translate-y-2 transition-all duration-500 scale-100">
+        <div class="flex items-center gap-3">
+          <span class="text-3xl">🚀</span>
+          <span class="text-2xl font-bold tracking-tight">SSOBridge</span>
+        </div>
+        
+        <div>
+          <p data-i18n="diag_center_title_1" class="text-xl font-medium leading-snug">Intégration</p>
+          <p data-i18n="diag_center_title_2" class="text-xl font-medium leading-snug">Simple</p>
+        </div>
+      </div>
+
+      <!-- Mode WITHOUT (Contient les éléments demandés) -->
+      <div id="card-center-without" class="hidden relative z-10 w-full md:w-72 h-64 bg-red-950/30 border border-red-800/50 rounded-2xl p-6 flex flex-col justify-between text-left text-red-200 shadow-xl md:-translate-y-2 transition-all duration-500">
+        <div class="flex items-center gap-2 text-red-400">
+          <span class="text-2xl">⚡</span>
+          <span class="text-sm font-mono font-bold uppercase">Custom Code</span>
+        </div>
+        
+        <div class="space-y-1 font-mono text-[11px] leading-tight text-red-300/80 bg-black/40 p-3 rounded-lg border border-red-900/50">
+          <p data-i18n="diag_err_1">✖ SAML config</p>
+          <p data-i18n="diag_err_2">✖ Custom auth</p>
+          <p data-i18n="diag_err_3">✖ N IdP Integrations</p>
+          <p data-i18n="diag_err_4">✖ User mapping</p>
+          <p data-i18n="diag_err_5">✖ Compliance</p>
+          <p data-i18n="diag_err_6">✖ Security</p>
+        </div>
+
+        <p data-i18n="diag_err_footer" class="text-xs text-red-400 font-medium">Des semaines de travail d'ingénierie</p>
+      </div>
+
+      <!-- CARD 3: Identity Provider -->
+      <div class="relative z-10 w-full md:w-64 h-60 bg-[#14151f] border border-slate-800 rounded-2xl p-6 flex flex-col justify-between text-left shadow-xl transition-all duration-500 hover:border-slate-700">
+        <div>
+          <h4 data-i18n="diag_idp_1" class="text-lg font-medium text-slate-200">Fournisseur</h4>
+          <h4 data-i18n="diag_idp_2" class="text-lg font-medium text-slate-200">d'Identité Client</h4>
+        </div>
+        
+        <div class="grid grid-cols-2 gap-2 text-xs text-slate-400 font-medium pt-4 border-t border-slate-800/80">
+          <div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-400"></span> Okta</div>
+          <div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-indigo-400"></span> PingIdentity</div>
+          <div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-red-400"></span> ForgeRock</div>
+          <div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Supabase</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+  const btnWith = document.getElementById('btn-with-diagram');
+  const btnWithout = document.getElementById('btn-without-diagram');
+  const headerWith = document.getElementById('header-with');
+  const headerWithout = document.getElementById('header-without');
+  const cardCenterWith = document.getElementById('card-center-with');
+  const cardCenterWithout = document.getElementById('card-center-without');
+  const lineWith = document.getElementById('line-with');
+  const lineWithout = document.getElementById('line-without');
+
+  btnWith?.addEventListener('click', () => {
+    btnWith.className = 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20';
+    btnWithout.className = 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white';
+
+    headerWith?.classList.remove('hidden');
+    headerWithout?.classList.add('hidden');
+    cardCenterWith?.classList.remove('hidden');
+    cardCenterWithout?.classList.add('hidden');
+    lineWith?.classList.remove('hidden');
+    lineWithout?.classList.add('hidden');
+  });
+
+  btnWithout?.addEventListener('click', () => {
+    btnWithout.className = 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 bg-red-500 text-white shadow-lg shadow-red-500/20';
+    btnWith.className = 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white';
+
+    headerWithout?.classList.remove('hidden');
+    headerWith?.classList.add('hidden');
+    cardCenterWithout?.classList.remove('hidden');
+    cardCenterWith?.classList.add('hidden');
+    lineWithout?.classList.remove('hidden');
+    lineWith?.classList.add('hidden');
+  });
+</script>

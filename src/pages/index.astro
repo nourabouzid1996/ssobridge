@@ -1,10 +1,12 @@
 ---
-import Layout from '~/layouts/PageLayout.astro';
 
+import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Content from '~/components/widgets/Content.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
+import SSOBridgeComparison from '~/components/SSOBridgeComparison.astro';
+import EarlyAccessForm from '../components/EarlyAccessForm.astro';
 const googlePlayImg = '~/assets/images/image_copy.png';
 
 const metadata = {
@@ -14,72 +16,68 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  
+  <!-- Bouton de changement de langue (Flottant en haut à droite) -->
+  <div class="fixed top-4 right-4 z-50">
+    <button 
+      id="lang-toggle" 
+      class="px-3 py-1 text-sm font-semibold rounded-full bg-slate-800 text-slate-200 border border-slate-700 hover:bg-slate-700 transition"
+    >
+      EN
+    </button>
+  </div>
 
+  <!-- Hero Widget -->
   <Hero
     actions={[
-      /*{
-        variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
-        target: '_blank',
-        icon: 'tabler:download',
-      },*/
-      { text: 'Ajouter le SSO à mon SaaS', href: 'account' },
+      { variant: 'primary', text: 'Commencez gratuitement, aucune refonte requise', href: '#form' },
+      //{ text: "Parler à l'équipe commerciale", href: '#form' },
     ]}
   >
     <Fragment slot="title">
-      <span class="text-accent dark:text-white highlight"> SAML prêt pour la production via seulement 2 endpoints </span>
+      <span data-i18n="hero_title" class="text-accent dark:text-white highlight">
+        Ajoutez le SSO Entreprise en quelques jours, pas en des semaines.
+      </span>
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">Pensé pour les développeurs, prêt pour la production, et conçu pour accélérer la signature de clients entreprise.
-</span>
+        <span data-i18n="hero_subtitle" class="font-semibold">
+          Une seule intégration. SAML, OIDC, SCIM, provisionnement d'utilisateurs et mappage de rôles — tout est géré par SSOBridge
+        </span>
       </span>
     </Fragment>
   </Hero>
 
-  <!-- Note Widget ******************* -->
-
   <Note />
+  <SSOBridgeComparison />
 
-  <!-- Features Widget *************** -->
-
-  <!-- Content Widget **************** -->
-
-  <!-- Content Widget **************** -->
-
+  <!-- Content Widget 1 -->
   <Content
     isAfterContent
     items={[
       {
         title: 'Compatible avec les principaux fournisseurs d’identité',
-        description: `SSOBridge s’intègre facilement avec les principaux fournisseurs d’identité (Okta, Google, Microsoft, etc.).
-          SAML, OAuth ou OpenID Connect — une intégration simple, quel que soit votre fournisseur.`,
+        description: `SSOBridge s’intègre facilement avec les principaux fournisseurs d’identité (Okta, Google, Microsoft, etc.). SAML, OAuth ou OpenID Connect — une intégration simple, quel que soit votre fournisseur.`,
       },
-      
     ]}
     image={{
-          src: googlePlayImg,
-
+      src: googlePlayImg,
       alt: 'CANVA',
     }}
   >
-    <!--Fragment slot="content">Ensure your online presence truly represents you.</Fragment-->
-
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
+  <!-- Content Widget 2 -->
   <Content
     isAfterContent
-     items={[
+    items={[
       {
         title: 'SSO avec tous les IdP, via 2 endpoints',
-        description: `Une seule intégration, deux endpoints API, et le support des principaux Identity Providers (Okta, Microsoft, Google, Auth0, Keycloak).
-        Activez le SSO entreprise (SAML & OIDC) en quelques minutes.`,
+        description: `Une seule intégration, deux endpoints API, et le support des principaux Identity Providers (Okta, Microsoft, Google, Auth0, Keycloak). Activez le SSO entreprise (SAML & OIDC) en quelques minutes.`,
       },
     ]}
   >
@@ -87,31 +85,22 @@ const metadata = {
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
 
-    {/* Tabs container */}
-<Fragment slot="image">
-  <div class="relative w-full px-2 sm:px-4 lg:px-0">
-    
-    <!-- Glow background -->
-    <div class="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500 opacity-20 blur-2xl rounded-3xl"></div>
-
-    <!-- Code container -->
-    <div class="relative w-full max-w-3xl mx-auto bg-[#020617] border border-slate-800 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden">
-      
-      <!-- Top bar (mac style) -->
-      <div class="flex items-center justify-between px-3 sm:px-5 py-3 border-b border-slate-800">
-        <div class="flex items-center gap-2">
-          <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></span>
-          <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></span>
-          <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></span>
-        </div>
-        <span class="text-[10px] sm:text-xs text-slate-400 font-mono">
-          curl • SAML integration (2 endpoints)
-        </span>
-      </div>
-
-      <!-- Scrollable code (responsive fix) -->
-      <div class="w-full overflow-x-auto">
-        <pre class="min-w-[650px] sm:min-w-0 p-4 sm:p-6 text-[12px] sm:text-sm md:text-[14px] leading-relaxed font-mono text-slate-300">
+    <Fragment slot="image">
+      <div class="relative w-full px-2 sm:px-4 lg:px-0">
+        <div class="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-blue-500 via-indigo-500 to-cyan-500 opacity-20 blur-2xl rounded-3xl"></div>
+        <div class="relative w-full max-w-3xl mx-auto bg-[#020617] border border-slate-800 rounded-xl sm:rounded-2xl shadow-2xl overflow-hidden">
+          <div class="flex items-center justify-between px-3 sm:px-5 py-3 border-b border-slate-800">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-red-500"></span>
+              <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-yellow-500"></span>
+              <span class="w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-green-500"></span>
+            </div>
+            <span class="text-[10px] sm:text-xs text-slate-400 font-mono">
+              curl • SAML integration (2 endpoints)
+            </span>
+          </div>
+          <div class="w-full overflow-x-auto">
+            <pre class="min-w-[650px] sm:min-w-0 p-4 sm:p-6 text-[12px] sm:text-sm md:text-[14px] leading-relaxed font-mono text-slate-300">
 {`# Replace {auth_id} and {api_key} with your credentials
 
 # 1. Get SAML / OIDC login URL
@@ -127,109 +116,112 @@ curl -X GET "https://api.ssobridge.com/v1/saml/code" \\
   -H "Content-Type: application/json"
 
 # Done. 🚀 User authenticated with enterprise SSO.`}
-        </pre>
+            </pre>
+          </div>
+        </div>
       </div>
-
-    </div>
-  </div>
-</Fragment>
+    </Fragment>
   </Content>
 
-  {/* Tab Switching Script */}
-  <script>
-    const tabs = document.querySelectorAll('.tab-btn');
-    const tabPanes = document.querySelectorAll('.tab-pane');
-
-    tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => {
-        tabs.forEach((t) => t.classList.remove('active-tab'));
-        tab.classList.add('active-tab');
-
-        tabPanes.forEach((pane) => {
-          pane.classList.add('hidden');
-          pane.classList.remove('active');
-        });
-
-        tabPanes[index].classList.remove('hidden');
-        tabPanes[index].classList.add('active');
-      });
-    });
-  </script>
-
-  <!-- Content Widget **************** -->
-
-  <!-- Steps Widget ******************  Un besoin spécifique ? Nous pouvons le prendre en charge rapidement. -->
-
-  <ContactUs
-  id="form"
-  title="Un besoin spécifique ? Contactez-nous dès aujourd’hui"
-  inputs={[
-    {
-      type: 'email',
-      name: 'email',
-      label: 'Adresse email',
-    },
-  ]}
-  textarea={{
-    label: 'Message',
-    name: 'message',
-  }}
-  disclaimer={{
-    label:
-      'En soumettant ce formulaire, vous acceptez la collecte et le traitement de vos informations personnelles.',
-  }}
-  description="Notre équipe répond généralement sous 24 heures ouvrées."
-/>
-
-  <!--Steps
-    title="Get your dream website up and running in no time with SSoBridge."
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Download</span>',
-        description:
-          "Kickstart with GitHub! Either fork the SSoBridge template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
-        description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
-        description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by SSoBridge! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
-      },
-      {
-        title: 'Ready!',
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
-    }}
-  /--->
-
-  <!-- Features2 Widget ************** -->
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <!-- FAQs Widget ******************* -->
-
-  <!-- Stats Widget ****************** -->
-
-  <!--Stats
-    stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
-    ]}
-  /-->
-
-  <!-- CallToAction Widget *********** -->
-  <Hero actions={[{ text: 'Ajouter le SSO à mon SaaS', href: 'add' }]} />
+  <!-- Contact Form -->
+<!-- Contact Form -->
+  {/* <ContactUs
+    id="form"
+    title="Un besoin spécifique ? Contactez-nous dès aujourd’hui"
+    inputs={[{ type: 'email', name: 'email', label: 'Adresse email' }]}
+    textarea={{ label: 'Message', name: 'message' }}
+    disclaimer={{ label: 'En soumettant ce formulaire, vous acceptez la collecte et le traitement de vos informations personnelles.' }}
+    description="Notre équipe répond généralement sous 24 heures ouvrées."
+  /> */}
+<EarlyAccessForm />
+  <Hero 
+    actions={[
+      { variant: 'primary', text: 'Commencez gratuitement, aucune refonte requise', href: '#form' },
+      //{ text: "Parler à l'équipe commerciale", href: '#form' }
+    ]} 
+  />
 </Layout>
+
+<!-- Script de traduction dynamique -->
+<script>
+  import fr from '../locales/fr.json';
+  import en from '../locales/en.json';
+
+  const translations = { fr, en };
+
+  function getLanguage() {
+    const saved = localStorage.getItem('user_lang');
+    if (saved && ['fr', 'en'].includes(saved)) return saved;
+    return navigator.language.startsWith('fr') ? 'fr' : 'en';
+  }
+
+  function updateTexts(lang) {
+    const dict = translations[lang];
+
+    // 1. Traduction et forçage sur une seule ligne avec whitespace-nowrap
+    document.querySelectorAll('a[href="account"], a[href="add"]').forEach((btn) => {
+      btn.textContent = dict['hero_btn_primary'];
+      btn.classList.add('whitespace-nowrap'); // Force le bouton à rester sur une seule ligne
+    });
+
+    document.querySelectorAll('a[href="account"]').forEach((btn) => {
+      btn.textContent = dict['hero_btn_secondary'];
+      btn.classList.add('whitespace-nowrap');
+    });
+
+    // 2. Éléments avec data-i18n
+    document.querySelectorAll('[data-i18n]').forEach((el) => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key]) el.textContent = dict[key];
+    });
+
+    // 3. Ciblage direct des widgets AstroWind
+    document.querySelectorAll('h3, h2, label, p, span, div').forEach((el) => {
+      if (el.children.length > 0) return;
+
+      const txt = el.textContent?.trim();
+      if (!txt) return;
+
+      if (txt.includes('Compatible avec les principaux') || txt.includes('Compatible with major')) {
+        el.textContent = dict['content1_title'];
+      }
+      if (txt.includes('SSOBridge s’intègre') || txt.includes('SSOBridge integrates')) {
+        el.textContent = dict['content1_desc'];
+      }
+      if (txt.includes('SSO avec tous les IdP') || txt.includes('SSO with all IdPs')) {
+        el.textContent = dict['content2_title'];
+      }
+      if (txt.includes('Une seule intégration') || txt.includes('Single integration')) {
+        el.textContent = dict['content2_desc'];
+      }
+      if (txt.includes('Un besoin spécifique') || txt.includes('Specific requirement')) {
+        el.textContent = dict['contact_title'];
+      }
+      if (txt.includes('Notre équipe répond') || txt.includes('Our team usually responds')) {
+        el.textContent = dict['contact_desc'];
+      }
+      if (txt.includes('En soumettant ce formulaire') || txt.includes('By submitting this form')) {
+        el.textContent = dict['contact_disclaimer'];
+      }
+      if (txt === 'Adresse email' || txt === 'Email address') {
+        el.textContent = dict['contact_email_label'];
+      }
+      if (txt === 'Message') {
+        el.textContent = dict['contact_message_label'];
+      }
+    });
+
+    localStorage.setItem('user_lang', lang);
+    document.documentElement.lang = lang;
+    const btn = document.getElementById('lang-toggle');
+    if (btn) btn.textContent = lang === 'fr' ? 'EN' : 'FR';
+  }
+
+  let currentLang = getLanguage();
+  updateTexts(currentLang);
+
+  document.getElementById('lang-toggle')?.addEventListener('click', () => {
+    currentLang = currentLang === 'fr' ? 'en' : 'fr';
+    updateTexts(currentLang);
+  });
+</script>
