@@ -33,7 +33,7 @@ const { metadata } = Astro.props;
   <main>
     <slot />
   </main>
-  <slot name="footer">
-    <Footer {...footerData} />
+<slot name="footer">
+    <Footer secondaryLinks={[]} socialLinks={[]} {...footerData} />
   </slot>
 </Layout>

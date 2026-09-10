@@ -1,4 +1,3 @@
-import { getAsset } from './utils/permalinks';
 
 export const headerData = {
   links: [

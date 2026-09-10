@@ -126,9 +126,8 @@
   const lineWithout = document.getElementById('line-without');
 
   btnWith?.addEventListener('click', () => {
-    btnWith.className = 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20';
-    btnWithout.className = 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white';
-
+btnWith?.setAttribute('class', 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white');
+btnWithout?.setAttribute('class', 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white');
     headerWith?.classList.remove('hidden');
     headerWithout?.classList.add('hidden');
     cardCenterWith?.classList.remove('hidden');
@@ -139,8 +138,13 @@
 
   btnWithout?.addEventListener('click', () => {
     btnWithout.className = 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 bg-red-500 text-white shadow-lg shadow-red-500/20';
-    btnWith.className = 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white';
+// Si vous utilisez className direct :
+if (btnWith) {
+  btnWith.className = 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white';
+}
 
+// Ou en utilisant setAttribute avec l'optionnel chaining :
+btnWith?.setAttribute('class', 'px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 text-slate-400 hover:text-white');
     headerWithout?.classList.remove('hidden');
     headerWith?.classList.add('hidden');
     cardCenterWithout?.classList.remove('hidden');
