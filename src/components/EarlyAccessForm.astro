@@ -19,7 +19,8 @@
         Entrez votre adresse email professionnelle ci-dessous pour recevoir votre accès et vos identifiants d'essai.
       </p>
 
-      <form id="waitlist-form" class="max-w-md mx-auto space-y-4">
+      <!-- Formulaire configuré pour Formspree -->
+      <form id="waitlist-form" action="https://formspree.io/f/mpwavpdq" method="POST" class="max-w-md mx-auto space-y-4">
         <div class="text-left">
           <label data-i18n="contact_email_label" for="email" class="block text-xs font-medium text-slate-400 mb-1">
             Adresse email professionnelle
@@ -32,7 +33,7 @@
             placeholder="nom@entreprise.com"
             class="w-full px-4 py-3.5 rounded-xl bg-slate-900/90 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition"
           />
-          <!-- Message d'erreur si mail perso -->
+          <!-- Message d'erreur pour emails personnels -->
           <p id="error-message" class="hidden text-xs text-red-400 mt-1.5 font-medium">
             ⚠️ Veuillez entrer une adresse email professionnelle (ex: nom@entreprise.com).
           </p>
@@ -60,37 +61,59 @@
 </div>
 
 <script>
-  // Liste des domaines emails personnels/gratuits à bloquer
+  // Domaines emails personnels à bloquer
   const freeEmailDomains = [
     'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'live.com', 
     'icloud.com', 'aol.com', 'protonmail.com', 'zoho.com', 'yandex.com', 
     'mail.ru', 'gmx.com', 'wanadoo.fr', 'orange.fr', 'free.fr', 'sfr.fr', 'laposte.net'
   ];
 
-  const form = document.getElementById('waitlist-form') as HTMLFormElement;
-  const emailInput = document.getElementById('email') as HTMLInputElement;
+  const form = document.getElementById('waitlist-form') as HTMLFormElement | null;
+  const emailInput = document.getElementById('email') as HTMLInputElement | null;
   const errorMessage = document.getElementById('error-message');
   const successMessage = document.getElementById('success-message');
 
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    
-    const email = emailInput.value.trim().toLowerCase();
-    const domain = email.split('@')[1];
+  if (form && emailInput) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = emailInput.value.trim().toLowerCase();
+      const domain = email.split('@')[1];
 
-    // Vérification si le domaine appartient à la liste noire des mails personnels
-    if (domain && freeEmailDomains.includes(domain)) {
-      errorMessage?.classList.remove('hidden');
-      emailInput.classList.add('border-red-500', 'focus:ring-red-500');
-      return;
-    }
+      // Blocklist check
+      if (domain && freeEmailDomains.includes(domain)) {
+        errorMessage?.classList.remove('hidden');
+        emailInput.classList.add('border-red-500', 'focus:ring-red-500');
+        return;
+      }
 
-    // Si le mail est valide / pro
-    errorMessage?.classList.add('hidden');
-    emailInput.classList.remove('border-red-500', 'focus:ring-red-500');
+      // Reset validation states
+      errorMessage?.classList.add('hidden');
+      emailInput.classList.remove('border-red-500', 'focus:ring-red-500');
 
-    // Soumission réussie
-    form.classList.add('hidden');
-    successMessage?.classList.remove('hidden');
-  });
+      // Send to Formspree using JSON payload
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: JSON.stringify({ email: email }),
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          form.classList.add('hidden');
+          successMessage?.classList.remove('hidden');
+        } else {
+          const data = await response.json();
+          console.error('Formspree Error:', data);
+          alert('Une erreur est survenue (403). Assurez-vous que votre clé Formspree est active et que "localhost" est autorisé dans les réglages Formspree si vous êtes en local.');
+        }
+      } catch (error) {
+        console.error('Erreur réseau :', error);
+        alert('Impossible de contacter le serveur. Vérifiez votre connexion.');
+      }
+    });
+  }
 </script>
