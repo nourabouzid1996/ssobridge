@@ -1,7 +1,7 @@
 {
   "hero_btn_primary": "Commencez gratuitement, aucune refonte requise",
   "hero_btn_secondary": "Commencez gratuitement, aucune refonte requise",
-  "hero_title": "Ajoutez le SSO Entreprise en quelques jours, pas en des semaines.",
+  "hero_title": "Ajoutez le SSO Entreprise en quelques jours.",
   "hero_subtitle": "Une seule intégration. SAML, OIDC, SCIM, provisionnement d'utilisateurs et mappage de rôles — tout est géré par SSOBridge.",
   "content1_title": "Compatible avec les principaux fournisseurs d’identité",
   "content1_desc": "SSOBridge s’intègre facilement avec les principaux fournisseurs d’identité (Okta, Google, Microsoft, etc.). SAML, OAuth ou OpenID Connect — une intégration simple, quel que soit votre fournisseur.",
