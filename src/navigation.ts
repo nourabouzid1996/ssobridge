@@ -105,14 +105,11 @@ export const headerData = {
           text: 'Blog List',
           href: getBlogPermalink(),
         },
-        {
-          text: 'Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-        },
-        {
-          text: 'Article (with MDX)',
-          href: getPermalink('markdown-elements-demo-post', 'post'),
-        },
+     {
+  text: 'Article',
+  href: getPermalink('get-started-with-sso', 'post'),
+}
+       
         {
           text: 'Category Page',
           href: getPermalink('tutorials', 'category'),
