@@ -1,7 +1,35 @@
+import { getPermalink, getBlogPermalink, getAsset } from '~/utils/permalinks';
 
 export const headerData = {
   links: [
-    /*{
+  
+    {
+      text: 'Blog',
+      links: [
+        {
+          text: 'Blog List',
+          href: getBlogPermalink(),
+        },
+        {
+          text: 'Article',
+          href: getPermalink('get-started-with-sso', 'post'),
+        },
+      ],
+    },
+  ],
+};
+
+export const footerData = {
+  links: [],
+  footNote: `
+    <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img> © Copyright 2024,  All rights reserved.
+  `,
+};
+
+/*
+export const headerData = {
+  links: [
+    {
       text: 'Homes',
       links: [
         {
@@ -21,8 +49,8 @@ export const headerData = {
           href: getPermalink('/homes/personal'),
         },
       ],
-    },*/
-    /*{
+    },
+    {
       text: 'Pages',
       links: [
         {
@@ -55,7 +83,7 @@ export const headerData = {
         },
       ],
     },
-    /* {
+    {
       text: 'Landing',
       links: [
         {
@@ -83,13 +111,11 @@ export const headerData = {
           href: getPermalink('/landing/subscription'),
         },
       ],
-
+    },
     {
-   =====>   text: 'Documentation',
+      text: 'Documentation',
       href: '/documentation',
     },
-     }*/
-    /* {
     {
       text: 'Pricing',
       href: '/pricing',
@@ -105,11 +131,10 @@ export const headerData = {
           text: 'Blog List',
           href: getBlogPermalink(),
         },
-     {
-  text: 'Article',
-  href: getPermalink('get-started-with-sso', 'post'),
-}
-       
+        {
+          text: 'Article',
+          href: getPermalink('get-started-with-sso', 'post'),
+        },
         {
           text: 'Category Page',
           href: getPermalink('tutorials', 'category'),
@@ -120,16 +145,16 @@ export const headerData = {
         },
       ],
     },
-    /*{
+    {
       text: 'Widgets',
       href: '#',
-    },*/
+    },
   ],
 };
 
 export const footerData = {
   links: [
-    /*  {
+    {
       title: 'Product',
       links: [
         { text: 'Features', href: '#' },
@@ -172,9 +197,9 @@ export const footerData = {
         { text: 'Social Impact', href: '#' },
         { text: 'Shop', href: '#' },
       ],
-    },*/
+    },
   ],
-  /*secondaryLinks: [
+  secondaryLinks: [
     { text: 'Terms', href: getPermalink('/terms') },
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
@@ -184,8 +209,9 @@ export const footerData = {
     { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
     { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
-  ],*/
+  ],
   footNote: `
     <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img> © Copyright 2024,  All rights reserved.
   `,
 };
+*/
