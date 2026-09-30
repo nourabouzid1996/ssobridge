@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://sso-bridge.com/sitemap-index.xml
